@@ -1,41 +1,37 @@
 import unittest
 from leafnode import LeafNode
 
-# Can do a lot more with tests for HtmlNode and methods like props_to_html in the future.
-class TestLeaf_BasicCreation(unittest.TestCase):
-    def test_eq(self):
+class TestLeaf(unittest.TestCase):
+    def test_to_html_should_return_value_only_when_no_tag(self):
+        print("...yyy...")
         node = LeafNode(None, "value")
         self.assertEqual(node.to_html(), "value")
 
-class TestLeafNode_ShouldCreateParagraphHtml(unittest.TestCase):
-    def test_eq(self):
+    def test_to_html_should_createParagraphHtml(self):
         node = LeafNode("p", "This is a paragraph of text.")
         self.assertEqual(node.to_html(), "<p>This is a paragraph of text.</p>")
 
-class TestLeafNode_ShouldCreateAnchorHtml(unittest.TestCase):
-    def test_eq(self):
+    def test_to_html_should_create_anchor_html(self):
         node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
         self.assertEqual(node.to_html(), '<a href="https://www.google.com">Click me!</a>')
 
-class TestLeafNode_ShouldCreateValueWhenNoTag(unittest.TestCase):
-    def test_eq(self):
+    def test_to_html_should_create_value_when_no_tag(self):
         node = LeafNode(None, "This is just raw text.")
         self.assertEqual(node.to_html(), "This is just raw text.")
 
-class TestLeafNode_ShouldRaiseValueErrorWhenNoneValue(unittest.TestCase):
-    def test_eq(self):
+    def test_to_html_should_raise_value_error_when_none_value(self):
         node = LeafNode("test", None)
         with self.assertRaises(ValueError):
             node.to_html()
 
-class TestLeafNode_ShouldRaiseValueErrorWhenEmptyStringValue(unittest.TestCase):
-    def test_eq(self):
+    def test_to_html_should_raise_value_error_when_value_is_empty_string(self):
+        print("...xxx...")
         node = LeafNode("test", "")
         with self.assertRaises(ValueError):
             node.to_html()
 
-class TestLeafNode_Repr(unittest.TestCase):
-    def test_eq(self):
+    def test_repr(self):
+        print("...repr...")
         node = LeafNode("tag", "value")
         self.assertEqual(str(node), "LeafNode(tag: 'tag', value: 'value', props: None)")
 

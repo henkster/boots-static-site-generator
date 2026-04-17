@@ -3,7 +3,6 @@ from leafnode import LeafNode
 
 class TestLeaf(unittest.TestCase):
     def test_to_html_should_return_value_only_when_no_tag(self):
-        print("...yyy...")
         node = LeafNode(None, "value")
         self.assertEqual(node.to_html(), "value")
 
@@ -25,13 +24,11 @@ class TestLeaf(unittest.TestCase):
             node.to_html()
 
     def test_to_html_should_raise_value_error_when_value_is_empty_string(self):
-        print("...xxx...")
         node = LeafNode("test", "")
         with self.assertRaises(ValueError):
             node.to_html()
 
     def test_repr(self):
-        print("...repr...")
         node = LeafNode("tag", "value")
         self.assertEqual(str(node), "LeafNode(tag: 'tag', value: 'value', props: None)")
 
